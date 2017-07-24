@@ -1,0 +1,31 @@
+
+#' Formatted dissolved gas data.
+#'
+#' A dataset containing reference air concentrations, equilibrated gas conccentrations, 
+#' water temperature, barometric pressure, volume of water, and volume of air needed to
+#' calculate dissolved gas concentrations in the water sample.
+#'
+#' @format A data frame with 25 rows and 18 variables:
+#' \describe{
+#'   \item{waterSampleID}{sample identifier, string}
+#'   \item{referenceAirSampleID}{sample identifier, string}
+#'   \item{equilibratedAirSampleID}{sample identifier, string}
+#'   \item{collectDate}{date and time of water sample collection, dateTime}
+#'   \item{processedDate}{date and time of air and water equilibration, dateTime}
+#'   \item{stationID}{loaction of water sample collection, string}
+#'   \item{barometricPressure}{handhled meter measurement, kPa}
+#'   \item{waterTemp}{temperature of the water at the time of equilibration, Celsius}
+#'   \item{concentrationCO2Air}{CO2 concentration in air sample, ppmv}
+#'   \item{concentrationCO2Gas}{CO2 concentration in equilibrated gas sample, ppmv}
+#'   \item{concentrationCH4Air}{CH4 concentration in air sample, ppmv}
+#'   \item{concentrationCH4Gas}{CH4 concentration in equilibrated gas sample, ppmv}
+#'   \item{concentrationN2OAir}{N2O concentration in air sample, ppmv}
+#'   \item{concentrationN2OGas}{N2O concentration in equilibrated gas sample, ppmv}
+#'   \item{waterVolume}{volume of water equilibrated, mL}
+#'   \item{gasVolume}{volume of air equilibrated, mL}
+#'   \item{volH2OSource}{0 = found in data, 1 = default value used}
+#'   \item{volGasSource}{0 = found in data, 1 = default value used}
+#'   ...
+#' }
+#' @source \url{http://data.neoninc.org/home/}
+"sdgFormatted"
