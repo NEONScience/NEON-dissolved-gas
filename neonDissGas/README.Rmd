@@ -25,6 +25,13 @@ The functions in this package have the following purpose: (1) to format download
 2. sdg_data <- def.format.sdg(dataDir = "myDataPath"), returns a data frame called sdg_data
 3. sdg_calc <- def.calc.sdg(sdg_data), returns a data frame called sdg_calc with molar concentrations appended as columns
 
+
+<!-- ****** Calculation Summary ****** -->
+## Calculation Summary
+<img src="sdg_1.png" width="700px" />
+
+<img src="sdg_2.png" width="700px" />
+
 <!-- ****** Acknowledgements ****** -->
 ## Credits & Acknowledgements
 

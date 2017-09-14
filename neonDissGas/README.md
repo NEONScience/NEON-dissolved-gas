@@ -11,9 +11,17 @@ Usage
 
 The functions in this package have the following purpose: (1) to format downloaded data, and (2) to calculate dissolved gas concentrations in surface water (mol L-1) from reference air and equilibrated air (ppmv) concentrations. See help files for individual functions for details. The general flow of using this package is:
 
-1.  download data from the NEON data portal, into path "myDataFolder"
-2.  sdg\_data &lt;- def.format.sdg(dataDir = "myDataFolder"), returns a data frame called sdg\_data
+1.  download data from the NEON data portal, into location "myDataPath"
+2.  sdg\_data &lt;- def.format.sdg(dataDir = "myDataPath"), returns a data frame called sdg\_data
 3.  sdg\_calc &lt;- def.calc.sdg(sdg\_data), returns a data frame called sdg\_calc with molar concentrations appended as columns
+
+<!-- ****** Calculation Summary ****** -->
+Calculation Summary
+-------------------
+
+<img src="sdg_1.png" width="700px" />
+
+<img src="sdg_2.png" width="700px" />
 
 <!-- ****** Acknowledgements ****** -->
 Credits & Acknowledgements

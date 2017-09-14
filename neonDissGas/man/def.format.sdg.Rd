@@ -20,7 +20,8 @@ This function reads in data from the NEON Dissolved Gas data product to calculat
 #where the data .zip file is in the working directory and has the default name, 
 #sdgFormatted <- def.format.sdg()
 #where the data.zip file is in the downloads folder and has default name, 
-#sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/NEON_dissolved-gases-surfacewater.zip"))
+#sdgFormatted <- 
+#def.format.sdg(dataDir = path.expand("~/Downloads/NEON_dissolved-gases-surfacewater.zip"))
 #where the data.zip file is in the downloads folder and has a specified name,
 #sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/non-standard-name.zip"))
 #Using the example data in this package

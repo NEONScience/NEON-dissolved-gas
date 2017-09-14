@@ -53,7 +53,7 @@ system.file("extdata", "sdgTestData.csv", package = "neonDissGas"))
 License: GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007
 }
 \seealso{
-def.values.sdg.R and def.format.sdg.R for calculating dissolved gas concentrations
+def.format.sdg.R for formatting dissolved gas data downloaded from NEON
 }
 \author{
 Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr

@@ -6,7 +6,8 @@
 #' Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 
 #' @description This function reads in data from the NEON Dissolved Gas data product to calculate dissolved gas concentrations in surface water. For the best results download the expanded dissolved gas package. No need to unzip the downloaded files, just place them all in the smae directory.
-#' @import neonDataStackR
+#' @importFrom neonDataStackR stackByTable
+#' @importFrom utils read.csv
 
 #' @param dataDir User identifies the directory that contains the zipped data
 
@@ -21,7 +22,8 @@
 #' #where the data .zip file is in the working directory and has the default name, 
 #' #sdgFormatted <- def.format.sdg()
 #' #where the data.zip file is in the downloads folder and has default name, 
-#' #sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/NEON_dissolved-gases-surfacewater.zip"))
+#' #sdgFormatted <- 
+#' #def.format.sdg(dataDir = path.expand("~/Downloads/NEON_dissolved-gases-surfacewater.zip"))
 #' #where the data.zip file is in the downloads folder and has a specified name,
 #' #sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/non-standard-name.zip"))
 #' #Using the example data in this package
@@ -42,8 +44,10 @@ def.format.sdg <- function(
   volH2O <- 40 #mL
   volGas <- 20 #mL
   
-  #Grab external lab data
-  neonDataStackR::stackByTable(dataDir)
+  #Stack field and external lab data
+  if(!dir.exists(substr(dataDir, 1, (nchar(dataDir)-4)))){
+    stackByTable(dataDir)
+  }
   
   externalLabData <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_externalLabData.csv", sep = "/"), stringsAsFactors = F)
   fieldDataProc <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldDataProc.csv", sep = "/"), stringsAsFactors = F)

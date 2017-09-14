@@ -23,6 +23,11 @@ source("neonDissGas/R/def.format.sdg.R")
 # I don't have.  Function fails.
 def.format.sdg(dataDir = paste0(getwd(),"/NEON_dissolved-gases-surfacewater.zip"))
 
+if(file.exists('C:/Users/kcawley/Documents/GitHub/NEON-dissolved-gas')){
+  setwd("C:/Users/kcawley/Documents/GitHub/NEON-dissolved-gas")
+}
+
+
 # Load example data directly from package
 load("neonDissGas/data/sdgFormatted.Rda")
 

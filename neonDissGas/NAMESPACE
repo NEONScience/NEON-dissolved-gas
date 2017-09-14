@@ -2,4 +2,5 @@
 
 export(def.calc.sdg)
 export(def.format.sdg)
-import(neonDataStackR)
+importFrom(neonDataStackR,stackByTable)
+importFrom(utils,read.csv)
