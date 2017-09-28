@@ -41,6 +41,8 @@
 #     original creation
 #   Kaelin M. Cawley (2017-09-14)
 #     updated with step-by-step calculations in communication with Jake Beaulieu
+#   Kaelin M. Cawley & Jake Beaulieu (2017-09-28)
+#     updated with revised 
 ##############################################################################################
 def.calc.sdg <- function(
   inputFile,
@@ -63,7 +65,7 @@ def.calc.sdg <- function(
   ##### Constants #####
   cGas<-8.3144598 #universal gas constant (J K-1 mol-1)
   cKelvin <- 273.15 #Conversion factor from Kelvin to Celsius
-  cPresConv <- 0.000001 #Conversion factor from kPA to Pa
+  cPresConv <- 0.000001 # Conversion factor from ppmv to mole fraction, including kPa to Pa, m^3 to L, and ppmv to parts
   cT0 <- 298.15#Henry's law constant T0
   #Henry's law constants and temperature dependence from Sander (2015) DOI: 10.5194/acp-15-4399-2015
   ckHCO2 <- 0.00033 #mol m-3 Pa
