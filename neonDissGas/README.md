@@ -21,7 +21,7 @@ Calculation Summary
 
 The concentration of gas<sub>i</sub> dissolved in the original water sample (mol L<sup>-1</sup>) is calculated from a mass balance of the measured headspace mixing ratio of gas<sub>i</sub> (ppmv), the calculated concentration in the equilibrated headspace water, and the volumes of the headspace water and headspace gas. The calculations also require the pressure of the headspace equilibration (assumed to be equal to barometric pressure during sampling), the temperature of the headspace equilibration (assumed to be equal to the water temperature), the universal gas constant (R), and the Henry's Law Solubility Constant corrected to the temperature of the headspace equilibration system (assumed to be equal to the water temperature).
 
-The following applies to gas<sub>i</sub>, where gas<sub>i</sub> is equal to CH<sub>4</sub>, N<sub>2</sub>O, or CO<sub>2</sub>:
+The following applies to gas<sub>i</sub>, where gas<sub>i</sub> is equal to CH<sub>4</sub>, N<sub>2</sub>O, or CO<sub>2</sub>
 
 1.  The gas constant, R, equals 8.3144598 L kPa K<sup>-1</sup> mol<sup>-1</sup>
 2.  The dissolved gas concentration in the original water sample is calculated from a mass balance of the headspace equilibration system:
@@ -66,9 +66,7 @@ The following applies to gas<sub>i</sub>, where gas<sub>i</sub> is equal to CH<s
     <center>
     <img src="eq_5.png" width="300px" />
     </center>
-    where,
-    -   *T<sup>Θ</sup>* is equal to 298.15 K.
-    -   <img src="eq_4_1.png" width="50px" /> is equal to the constant provided in column <img src="eq_4_2.png" width="50px" /> in Table 6 of Sander (2015). This constant is equal to 2400 K, 1900 K, and 2700 K for CO<sub>2</sub>, CH<sub>4</sub>, and N<sub>2</sub>O, respectively.
+    where, - *T<sup>Θ</sup>* is equal to 298.15 K. - <img src="eq_4_1.png" width="50px" /> is equal to the constant provided in column <img src="eq_4_2.png" width="50px" /> in Table 6 of Sander (2015). This constant is equal to 2400 K, 1900 K, and 2700 K for CO<sub>2</sub>, CH<sub>4</sub>, and N<sub>2</sub>O, respectively.
 
 7.  The full equation for calculating the concentration of gas<sub>i</sub> dissolved in the original water is:
     <center>
