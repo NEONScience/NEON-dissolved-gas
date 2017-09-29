@@ -8,6 +8,7 @@ Description: Contains functions to format data and calculate dissolved CO2, CH4,
 	and barometric pressure at the time of equilibration.
 Depends: R (>= 3.3.2)
 Imports: neonDataStackR
+Remotes: NEONScience/NEON-utilities/neonDataStackR
 License: AGPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
