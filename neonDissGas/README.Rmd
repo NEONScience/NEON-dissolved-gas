@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 <!-- ****** Description ****** -->
 
-This package is for calculating dissolved gas concentrations in surfac water samples from reference air and water equilibrated gas samples.
+This package is for calculating dissolved gas concentrations in surface water samples from reference air and water equilibrated gas samples.
 
 <!-- ****** Usage ****** -->
 ## Usage
