@@ -3,7 +3,7 @@ NEON Dissolved Gas
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- ****** Description ****** -->
-This package is for calculating dissolved gas concentrations in surfac water samples from reference air and water equilibrated gas samples.
+This package is for calculating dissolved gas concentrations in surface water samples from reference air and water equilibrated gas samples.
 
 <!-- ****** Usage ****** -->
 Usage
@@ -25,28 +25,28 @@ The following applies to gas<sub>i</sub>, where gas<sub>i</sub> is equal to CH<s
 
 1.  The gas constant, R, equals 8.3144598 L kPa K<sup>-1</sup> mol<sup>-1</sup>
 2.  The dissolved gas concentration in the original water sample is calculated from a mass balance of the headspace equilibration system:<img src="eq_1.png" width="650px" />
-    -   *C<sub>gas<sub>i</sub></sub>water* is the concentration of gas<sub>i</sub> dissolved in the original water sample.
+    -   *C<sub>gas<sub>i</sub></sub>water* is the concentration (mol L<sup>-1</sup>),of gas<sub>i</sub> dissolved in the original water sample.
     -   *mol<sub>gas<sub>i</sub></sub>wat* is the total moles of gas<sub>i</sub> dissolved in the original water sample.
     -   *mol<sub>gas<sub>i</sub></sub>aireq* is the total moles of gas<sub>i</sub> in the equilibrated headspace gas.
     -   *mol<sub>gas<sub>i</sub></sub>wateq* is the total moles of gas<sub>i</sub> in the equilibrated water sample.
-    -   *mol<sub>gas<sub>i</sub></sub>air* is the total moles of gas<sub>i</sub> in the gas used for the headspace equilibrium. If a pure gas, such as helium or nitrogen, is used as the headspace gas, then mol<sub>gas<sub>i</sub></sub>air = 0. If a mixed gas, such as ambient air, is used as the headspace gas, the term mol<sub>gas<sub>i</sub></sub>air corrects the calculation for any amount of gas<sub>i</sub> contained in the headspace gas.
+    -   *mol<sub>gas<sub>i</sub></sub>air* is the total moles of gas<sub>i</sub> in the gas used for the headspace equilibrium. If a pure gas, such as helium or nitrogen, is used as the headspace gas, then mol<sub>gas<sub>i</sub></sub>air = 0. If a mixed gas, such as ambient air, is used as the reference gas, the term mol<sub>gas<sub>i</sub></sub>air corrects the calculation for any amount of gas<sub>i</sub> contained in the reference gas.
     -   *vol<sub>H<sub>2</sub>O</sub>* is the volume of the original water sample.
 
-3.  mol<sub>gas<sub>i</sub></sub>air<sub>eq</sub> is calculated from the Ideal Gas Law n = <sup>PV</sup>⁄<sub>RT</sub>. In htis equation, P = partial pressure of gas<sub>i</sub> adn T is the temperature of the headspace equilibration system (assumed to be equal to water temperature).<img src="eq_2.png" width="450px" />
-    -   *ppmv<sub>gas<sub>i</sub></sub>air<sub>eq</sub>* is the measured mixing ratio of gas<sub>i</sub> in the equilibrated headspace gas.
+3.  mol<sub>gas<sub>i</sub></sub>aireq is calculated from the Ideal Gas Law n = <sup>PV</sup>⁄<sub>RT</sub>. In this equation, P = partial pressure of gas<sub>i</sub> and T is the temperature of the headspace equilibration system (assumed to be equal to the temperature of the water body).<img src="eq_2.png" width="450px" />
+    -   *ppmv<sub>gas<sub>i</sub></sub>aireq* is the measured mixing ratio of gas<sub>i</sub> in the equilibrated headspace gas.
     -   *BP* is the barometric pressure (kPa).
-    -   *vol<sub>air</sub>* is the volume of air used in the headspace equilibrium (mL).
-    -   *T* is the temperature of the headspace system (assumed to be equal to water temperature; K).
-    -   *10<sup>-6</sup>* is a constant used to convert ppmv to parts.
+    -   *vol<sub>air</sub>* is the volume of reference gas used in the headspace equilibrium (mL).
+    -   *T* is the temperature of the headspace system (assumed to be equal to the temperature of the water body; K).
+    -   *10<sup>-6</sup>* is a constant used to convert ppmv to a unitless mole fraction.
 
 4.  mol<sub>gas<sub>i</sub></sub>air is calculated from the Ideal Gas Law, as above:<img src="eq_3.png" width="425px" />
-    -   *ppmv<sub>gas<sub>i</sub></sub>air* is the measured mixing ratio of gas<sub>i</sub> in the pure headspace gas (i.e., before micing with teh water sample).
+    -   *ppmv<sub>gas<sub>i</sub></sub>air* is the measured mixing ratio of gas<sub>i</sub> in the pure reference gas (i.e., before mixing with the water sample).
 
-5.  mol<sub>gas<sub>i</sub></sub>wat<sub>eq</sub> is calculated from Henry's Law and the colume of water used int he headspace equilibration. Henry's Law states that the concentration of gas<sub>i</sub> dissolved in a water sample is equal to the product of the partial pressure of gas<sub>i</sub> in the overlyiung atmosphere (i.e., the headspace gas) and the Henry's Law Solubility Constant for gas<sub>i</sub> at the temperature of the water, H(T).<img src="eq_4.png" width="550px" />
-    -   *10<sup>-6</sup>* is a constant used to convert ppmv to parts.
-    -   *H(T)* is optained from the compilation of Sander (2015), see below.
+5.  mol<sub>gas<sub>i</sub></sub>wateq is calculated from Henry's Law and the volume of water used in the headspace equilibration. Henry's Law states that the concentration of gas<sub>i</sub> dissolved in a water sample is equal to the product of the partial pressure of gas<sub>i</sub> in the overlying atmosphere (i.e., the headspace gas) and the Henry's Law Solubility Constant for gas<sub>i</sub> at the temperature of the water (H(T)).<img src="eq_4.png" width="550px" />
+    -   *10<sup>-6</sup>* is a constant used to convert ppmv to unitless mole fraction.
+    -   *H(T)* is obtained from the compilation of Sander (2015), see below.
 
-6.  Sander (2015) provides a compilation of Henry's Law Solubility Constants standardized to 298.15 K. This standardized Henry's Law Solubility COnstant (H<sup>Θ</sup>) can be converted to the temperature of the headspace equilibration H(T) following:<img src="eq_5.png" width="300px" />
+6.  Sander (2015) provides a compilation of Henry's Law Solubility Constants standardized to 298.15 K. This standardized Henry's Law Solubility Constant (H<sup>Θ</sup>) can be converted to the temperature of the headspace equilibration H(T) following:<img src="eq_5.png" width="300px" />
     -   *T<sup>Θ</sup>* is equal to 298.15 K.
     -   <img src="eq_4_1.png" width="50px" /> is equal to the constant provided in column <img src="eq_4_2.png" width="50px" /> in Table 6 of Sander (2015). This constant is equal to 2400 K, 1900 K, and 2700 K for CO<sub>2</sub>, CH<sub>4</sub>, and N<sub>2</sub>O, respectively.
 
