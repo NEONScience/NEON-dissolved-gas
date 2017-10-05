@@ -37,13 +37,13 @@ The following applies to gas<sub>i</sub>, where gas<sub>i</sub> is equal to CH<s
     -   *BP* is the barometric pressure (kPa).
     -   *vol<sub>air</sub>* is the volume of reference gas used in the headspace equilibrium (mL).
     -   *T* is the temperature of the headspace system (assumed to be equal to the temperature of the water body; K).
-    -   *10<sup>-6</sup>* is a constant used to convert ppmv to a unitless mole fraction.
+    -   *10<sup>-6</sup>* is a constant used to convert the mixing ratio from micromol/mol (ppmv) to mole/mole..
 
 4.  mol<sub>gas<sub>i</sub></sub>air is calculated from the Ideal Gas Law, as above:<img src="eq_3.png" width="425px" />
     -   *ppmv<sub>gas<sub>i</sub></sub>air* is the measured mixing ratio of gas<sub>i</sub> in the pure reference gas (i.e., before mixing with the water sample).
 
 5.  mol<sub>gas<sub>i</sub></sub>wateq is calculated from Henry's Law and the volume of water used in the headspace equilibration. Henry's Law states that the concentration of gas<sub>i</sub> dissolved in a water sample is equal to the product of the partial pressure of gas<sub>i</sub> in the overlying atmosphere (i.e., the headspace gas) and the Henry's Law Solubility Constant for gas<sub>i</sub> at the temperature of the water (H(T)).<img src="eq_4.png" width="550px" />
-    -   *10<sup>-6</sup>* is a constant used to convert ppmv to unitless mole fraction.
+    -   *10<sup>-6</sup>* is a constant used to convert the mixing ratio from micromol/mol (ppmv) to mole/mole.
     -   *H(T)* is obtained from the compilation of Sander (2015), see below.
 
 6.  Sander (2015) provides a compilation of Henry's Law Solubility Constants standardized to 298.15 K. This standardized Henry's Law Solubility Constant (H<sup>Θ</sup>) can be converted to the temperature of the headspace equilibration H(T) following:<img src="eq_5.png" width="300px" />
