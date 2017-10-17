@@ -60,8 +60,8 @@ def.calc.sdg <- function(
                   inputFile$waterTemp,
                   inputFile$headspaceTemp),
   eqCO2 = inputFile$concentrationCO2Gas,
-  airCO2 = ifelse(is.na(inputFile$concentrationCO2Air), # use global average if not measured
-                  405, # https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html
+  airCO2 = ifelse(is.na(inputFile$concentrationCO2Air),# if reported as NA
+                  405, # use global mean https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html
                   inputFile$concentrationCO2Air),
   sourceCO2 = inputFile$concentrationCO2Source,
   eqCH4 = inputFile$concentrationCH4Gas,
