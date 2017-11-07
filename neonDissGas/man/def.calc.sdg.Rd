@@ -6,12 +6,13 @@
 \usage{
 def.calc.sdg(inputFile, volGas = inputFile$gasVolume,
   volH2O = inputFile$waterVolume, baro = inputFile$barometricPressure,
-  waterTemp = inputFile$waterTemp, eqCO2 = inputFile$concentrationCO2Gas,
-  airCO2 = inputFile$concentrationCO2Air,
+  waterTemp = inputFile$waterTemp, headspaceTemp = inputFile$headspaceTemp,
+  eqCO2 = inputFile$concentrationCO2Gas,
+  sourceCO2 = inputFile$concentrationCO2Air,
   eqCH4 = inputFile$concentrationCH4Gas,
-  airCH4 = inputFile$concentrationCH4Air,
+  sourceCH4 = inputFile$concentrationCH4Air,
   eqN2O = inputFile$concentrationN2OGas,
-  airN2O = inputFile$concentrationN2OAir)
+  sourceN2O = inputFile$concentrationN2OAir)
 }
 \arguments{
 \item{inputFile}{Name of the data fram containing the information needed to calculate the dissolved gas concentrations. If the headers are named: "gasVolume", "waterVolume", "barometricPressure", "waterTemp", "concentrationCO2Gas", "concentrationCO2Air", "concentrationCH4Gas", "concentrationCH4Air", "concentrationN2OGas", "concentrationN2OAir", respectively, no other inputs are required. Otherwise, the names of the columns need to be input for the function to work.}
@@ -22,22 +23,26 @@ def.calc.sdg(inputFile, volGas = inputFile$gasVolume,
 
 \item{baro}{Barometric pressure at the time of equilibration [kPa]}
 
-\item{waterTemp}{Temperature of the water at the time of equilibration [celsius]}
+\item{waterTemp}{Temperature of the waterbody when sampled [celsius]}
+
+\item{headspaceTemp}{Temperature of the water sample during the headspace equilibration [celsius]}
 
 \item{eqCO2}{Concentration of carbon dioxide in the equilibrated gas [ppmv]}
 
-\item{airCO2}{Concentration of carbon dioxide in the reference air [ppmv]}
+\item{sourceCO2}{Concentration of carbon dioxide in headspace source gas [ppmv]}
 
 \item{eqCH4}{Concentration of methane in the equilibrated gas [ppmv]}
 
-\item{airCH4}{Concentration of methane in the reference air [ppmv]}
+\item{sourceCH4}{Concentration methane in headspace source gas [ppmv]}
 
 \item{eqN2O}{Concentration of nitrous oxide in the equilibrated gas [ppmv]}
 
-\item{airN2O}{Concentration of nitrous oxide in the reference air [ppmv]}
+\item{sourceN2O}{Concentration of nitrous oxide in headspace source gas [ppmv]}
 }
 \value{
-This function returns dissolved CO2, CH4, and N2O concentrations in surface water [M] appended as additional columns to the input data frame
+This function returns dissolved CO2, CH4, and N2O concentrations in surface water [M] based on headspace equilibration data.
+  Function also returns dissolved 100% saturation concentrations  [M] of CO2, CH4, and N2O in surface waters.
+  Outputs are appended as additional columns to the input data frame
 }
 \description{
 This function calculates dissolved CO2, CH4, and N2O concentrations from water samples based on inputs of equilibration conditions and reference and equilibrated air CO2, CH4, and N2O concentrations. If samples were equilibrated with a pure gas that contains no CO2, CH4, or N2O, the concentrations for the reference air ("concentrationCO2Air", "concentrationCH4Air", "concentrationN2OAir") for those gases should be set to 0.
@@ -49,14 +54,14 @@ sdgDataPlusVals <- def.calc.sdg(inputFile = sdgFormatted)
 sdgDataPlusVals <- def.calc.sdg(inputFile = 
 system.file("extdata", "sdgTestData.csv", package = "neonDissGas"))
 }
+\author{
+Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
+}
 \references{
 License: GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007
 }
 \seealso{
 def.format.sdg.R for formatting dissolved gas data downloaded from NEON
-}
-\author{
-Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 }
 \keyword{CH4,}
 \keyword{CO2,}
@@ -74,3 +79,4 @@ Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 \keyword{streams,}
 \keyword{surface}
 \keyword{water,}
+

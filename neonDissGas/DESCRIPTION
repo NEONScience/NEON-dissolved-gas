@@ -2,14 +2,17 @@ Package: neonDissGas
 Title: Calculates Dissolved CO2, CH4, and N2O Concentrations in Surface Water
 Version: 0.0.0.9000
 Authors@R: person("Kaelin", "Cawley", email = "kcawley@battelleecology.org", role = c("aut", "cre"))
-Description: Contains functions to format data and calculate dissolved CO2, CH4, and N2O 
-	concentrations in surface water from reference air and water equilibrated gas samples.
-	The calculations require the volume of air and water that are equilibrated and the temperature
-	and barometric pressure at the time of equilibration.
-Depends: R (>= 3.3.2)
-Imports: neonDataStackR
+Description: Contains functions to format data and calculate dissolved CO2,
+    CH4, and N2O concentrations in surface water from reference air and water
+    equilibrated gas samples. The calculations require the volume of air and water
+    that are equilibrated and the temperature and barometric pressure at the time of
+    equilibration.
+Depends:
+    R (>= 3.3.2)
+Imports:
+    neonDataStackR
 Remotes: NEONScience/NEON-utilities/neonDataStackR
 License: AGPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 5.0.1

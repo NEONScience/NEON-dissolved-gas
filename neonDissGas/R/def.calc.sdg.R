@@ -13,13 +13,10 @@
 #' @param waterTemp Temperature of the waterbody when sampled [celsius]
 #' @param headspaceTemp Temperature of the water sample during the headspace equilibration [celsius]
 #' @param eqCO2 Concentration of carbon dioxide in the equilibrated gas [ppmv]
-#' @param airCO2 Concentration of carbon dioxide in atmosphere [ppmv]
 #' @param sourceCO2 Concentration of carbon dioxide in headspace source gas [ppmv]
 #' @param eqCH4 Concentration of methane in the equilibrated gas [ppmv]
-#' @param airCH4 Concentration of methane in atmosphere [ppmv]
 #' @param sourceCH4 Concentration methane in headspace source gas [ppmv]
 #' @param eqN2O Concentration of nitrous oxide in the equilibrated gas [ppmv]
-#' @param airN2O Concentration of nitrous oxide in atmosphere [ppmv]
 #' @param sourceN2O Concentration of nitrous oxide in headspace source gas [ppmv]
 
 #' @return This function returns dissolved CO2, CH4, and N2O concentrations in surface water [M] based on headspace equilibration data.
@@ -56,30 +53,18 @@ def.calc.sdg <- function(
   volH2O = inputFile$waterVolume,
   baro = inputFile$barometricPressure,
   waterTemp = inputFile$waterTemp,
-  headspaceTemp = ifelse(is.na(inputFile$headspaceTemp), # if headspace temp not recorded, use water temp
-                  inputFile$waterTemp,
-                  inputFile$headspaceTemp),
+  headspaceTemp = inputFile$headspaceTemp,
   eqCO2 = inputFile$concentrationCO2Gas,
-  airCO2 = ifelse(is.na(inputFile$concentrationCO2Air),# if reported as NA
-                  405, # use global mean https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html
-                  inputFile$concentrationCO2Air),
-  sourceCO2 = inputFile$concentrationCO2Source,
+  sourceCO2 = inputFile$concentrationCO2Air,
   eqCH4 = inputFile$concentrationCH4Gas,
-  airCH4 = ifelse(is.na(inputFile$concentrationCH4Air), # use global average if not measured
-                  1.85, #https://www.esrl.noaa.gov/gmd/ccgg/trends_ch4/
-                  inputFile$concentrationCH4Air),
-  sourceCH4 = inputFile$concentrationCH4Source,
+  sourceCH4 = inputFile$concentrationCH4Air,
   eqN2O = inputFile$concentrationN2OGas,
-  airN2O = ifelse(is.na(inputFile$concentrationN2OAir), # use global average if not measured
-                  0.330, #https://www.esrl.noaa.gov/gmd/hats/combined/N2O.html
-                  inputFile$concentrationN2OAir),
-  sourceN2O = inputFile$concentrationN2OSource
+  sourceN2O = inputFile$concentrationN2OAir
 ) {
   
   if(typeof(inputFile) == "character"){
     inputFile <- read.csv(inputFile)
   }
-  
   
   ##### Constants #####
   cGas<-8.3144598 #universal gas constant (J K-1 mol-1)
@@ -93,6 +78,19 @@ def.calc.sdg <- function(
   cdHdTCO2 <- 2400 #K, range: 2300 - 2600
   cdHdTCH4 <- 1900 #K, range: 1400-2400
   cdHdTN2O <- 2700 #K, range: 2600 - 3600
+  
+  ##### Populate mean global values for reference air where it isn't reported #####
+  airCO2 = ifelse(is.na(inputFile$concentrationCO2Air),# if reported as NA
+                  405, # use global mean https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html
+                  inputFile$concentrationCO2Air)
+  
+  airCH4 = ifelse(is.na(inputFile$concentrationCH4Air), # use global average if not measured
+                  1.85, #https://www.esrl.noaa.gov/gmd/ccgg/trends_ch4/
+                  inputFile$concentrationCH4Air)
+  
+  airN2O = ifelse(is.na(inputFile$concentrationN2OAir), # use global average if not measured
+                  0.330, #https://www.esrl.noaa.gov/gmd/hats/combined/N2O.html
+                  inputFile$concentrationN2OAir)
   
   ##### Calculate dissolved gas concentration in original water sample #####
   inputFile$dissolvedCO2 <- NA

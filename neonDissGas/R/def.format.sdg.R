@@ -67,6 +67,7 @@ def.format.sdg <- function(
     'processedDate',
     'stationID',
     'barometricPressure',
+    'headspaceTemp',
     'waterTemp',
     'concentrationCO2Air',
     'concentrationCO2Gas',
@@ -90,7 +91,7 @@ def.format.sdg <- function(
     if(names(outputDF)[k] %in% names(fieldDataProc)){
       outputDF[,k] <- fieldDataProc[,names(fieldDataProc) == names(outputDF)[k]]
     }
-    outputDF$waterTemp <- fieldDataProc$storageWaterTemp
+    outputDF$headspaceTemp <- fieldDataProc$storageWaterTemp
     outputDF$barometricPressure <- fieldDataProc$ptBarometricPressure
     outputDF$waterVolume <- fieldDataProc$waterVolumeSyringe
     outputDF$gasVolume <- fieldDataProc$gasVolumeSyringe
@@ -115,9 +116,10 @@ def.format.sdg <- function(
   
   #Populate the output file with water temperature data for streams
   for(m in 1:length(outputDF$waterSampleID)){
-    if(is.na(outputDF$waterTemp[m])){
+    try(outputDF$waterTemp[m] <- fieldSuperParent$waterTemp[fieldSuperParent$parentSampleID == outputDF$waterSampleID[m]],silent = T)
+    if(is.na(outputDF$headspaceTemp[m])){
       try(
-        outputDF$waterTemp[m] <- fieldSuperParent$waterTemp[fieldSuperParent$parentSampleID == outputDF$waterSampleID[m]],
+        outputDF$headspaceTemp[m] <- fieldSuperParent$waterTemp[fieldSuperParent$parentSampleID == outputDF$waterSampleID[m]],
         silent = T)
     }
   }

@@ -28,6 +28,9 @@ This function reads in data from the NEON Dissolved Gas data product to calculat
 dataDirectory <- paste(path.package("neonDissGas"),"inst\\\\extdata", sep = "\\\\")
 sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
 }
+\author{
+Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
+}
 \references{
 License: GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007
 }
@@ -36,9 +39,6 @@ def.values.sdg.R and def.calc.sdg.R for calculating dissolved gas concentrations
 CO2BelowDetection',
 CH4BelowDetection',
 N2OBelowDetection',
-}
-\author{
-Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 }
 \keyword{CH4,}
 \keyword{CO2,}
@@ -56,3 +56,4 @@ Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 \keyword{streams,}
 \keyword{surface}
 \keyword{water,}
+
