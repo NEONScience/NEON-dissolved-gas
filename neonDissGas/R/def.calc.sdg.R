@@ -6,7 +6,7 @@
 
 #' @description This function calculates dissolved CO2, CH4, and N2O concentrations from water samples based on inputs of equilibration conditions and reference and equilibrated air CO2, CH4, and N2O concentrations. If samples were equilibrated with a pure gas that contains no CO2, CH4, or N2O, the concentrations for the reference air ("concentrationCO2Air", "concentrationCH4Air", "concentrationN2OAir") for those gases should be set to 0.
 
-#' @param inputFile Name of the data fram containing the information needed to calculate the dissolved gas concentrations. If the headers are named: "gasVolume", "waterVolume", "barometricPressure", "waterTemp", "concentrationCO2Gas", "concentrationCO2Air", "concentrationCH4Gas", "concentrationCH4Air", "concentrationN2OGas", "concentrationN2OAir", respectively, no other inputs are required. Otherwise, the names of the columns need to be input for the function to work.
+#' @param inputFile Name of the data frame containing the information needed to calculate the dissolved gas concentrations. If the headers are named: "gasVolume", "waterVolume", "barometricPressure", "waterTemp", "concentrationCO2Gas", "concentrationCO2Air", "concentrationCH4Gas", "concentrationCH4Air", "concentrationN2OGas", "concentrationN2OAir", respectively, no other inputs are required. Otherwise, the names of the columns containing the data must be specified
 #' @param volGas Volume of air equilibrated with water [mL]
 #' @param volH2O Volume of water equilibrated with air [mL]
 #' @param baro Barometric pressure at the time of equilibration [kPa]
@@ -80,15 +80,15 @@ def.calc.sdg <- function(
   cdHdTN2O <- 2700 #K, range: 2600 - 3600
   
   ##### Populate mean global values for reference air where it isn't reported #####
-  airCO2 = ifelse(is.na(inputFile$concentrationCO2Air),# if reported as NA
+  sourceCO2 = ifelse(is.na(inputFile$concentrationCO2Air),# if reported as NA
                   405, # use global mean https://www.esrl.noaa.gov/gmd/ccgg/trends/global.html
                   inputFile$concentrationCO2Air)
   
-  airCH4 = ifelse(is.na(inputFile$concentrationCH4Air), # use global average if not measured
+  sourceCH4 = ifelse(is.na(inputFile$concentrationCH4Air), # use global average if not measured
                   1.85, #https://www.esrl.noaa.gov/gmd/ccgg/trends_ch4/
                   inputFile$concentrationCH4Air)
   
-  airN2O = ifelse(is.na(inputFile$concentrationN2OAir), # use global average if not measured
+  sourceN2O = ifelse(is.na(inputFile$concentrationN2OAir), # use global average if not measured
                   0.330, #https://www.esrl.noaa.gov/gmd/hats/combined/N2O.html
                   inputFile$concentrationN2OAir)
   
@@ -107,12 +107,13 @@ def.calc.sdg <- function(
 
   
   ##### Calculate dissolved gas concentration at 100% saturation ##### 
+  ##### This needs to be pulled out into standalone function     #####
   
   # 100% saturation occurs when the dissolved gas concentration is in equilibrium
   # with the atmosphere.
-  inputFile$satCO2 <- (ckHCO2 * exp(cdHdTCO2*(1/(waterTemp + cKelvin) - 1/cT0))) * airCO2 * baro * cPresConv
-  inputFile$satCH4 <- (ckHCH4 * exp(cdHdTCH4*(1/(waterTemp + cKelvin) - 1/cT0))) * airCH4 * baro * cPresConv  
-  inputFile$satN2O <- (ckHN2O * exp(cdHdTN2O*(1/(waterTemp + cKelvin) - 1/cT0))) * airN2O * baro * cPresConv
+  #inputFile$satCO2 <- (ckHCO2 * exp(cdHdTCO2*(1/(waterTemp + cKelvin) - 1/cT0))) * airCO2 * baro * cPresConv
+  #inputFile$satCH4 <- (ckHCH4 * exp(cdHdTCH4*(1/(waterTemp + cKelvin) - 1/cT0))) * airCH4 * baro * cPresConv  
+  #inputFile$satN2O <- (ckHN2O * exp(cdHdTN2O*(1/(waterTemp + cKelvin) - 1/cT0))) * airN2O * baro * cPresConv
   
   
   ##### Step-by-step Calculation of dissolved gas concentrations for testing #####
