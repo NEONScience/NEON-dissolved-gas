@@ -113,10 +113,6 @@ def.calc.sdg.sat <- function(
   inputFile$CH4PercSat <- inputFile[,concCH4]/inputFile$satConcCH4 * cConcPerc
   inputFile$N2OPercSat <- inputFile[,concN2O]/inputFile$satConcN2O * cConcPerc
   
-  inputFile$dissolvedN2O <- inputFile[,baro] * cPresConv * 
-    (inputFile[,volGas]*(inputFile[,eqN2O] - inputFile[,sourceN2O])/(cGas * (inputFile[,headspaceTemp] + cKelvin) * inputFile[,volH2O]) + 
-       ckHN2O * exp(cdHdTN2O*(1/(inputFile[,headspaceTemp] + cKelvin) - 1/cT0))* inputFile[,eqN2O])
-  
   return(inputFile)
   
 }

@@ -11,11 +11,11 @@ def.calc.sdg.sat(inputFile, baro = "barometricPressure",
   concN2O = "dissolvedN2O", sourceN2O = "concentrationN2OAir")
 }
 \arguments{
-\item{inputFile}{Name of the data fram containing the information needed to calculate 
+\item{inputFile}{Name of the data frame containing the information needed to calculate 
 the dissolved gas percent saturation. If the headers are named: barometricPressure", 
 "waterTemp", "dissolvedCO2", "concentrationCO2Air", "dissolvedCH4", "concentrationCH4Air", 
 "dissolvedN2O", "concentrationN2OAir", respectively, no other inputs are required. Otherwise, 
-the names of the columns need to be input for the function to work.}
+the names of the columns containing the data must be specified.}
 
 \item{baro}{Column name containing the data for barometric pressure at the time of 
 equilibration (kPa) [string]}

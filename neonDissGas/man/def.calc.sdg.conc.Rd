@@ -12,12 +12,12 @@ def.calc.sdg.conc(inputFile, volGas = "gasVolume", volH2O = "waterVolume",
   sourceN2O = "concentrationN2OAir")
 }
 \arguments{
-\item{inputFile}{Name of the data fram containing the information needed to calculate the 
+\item{inputFile}{Name of the data frame containing the information needed to calculate the 
 dissolved gas concentrations. If the headers are named: "gasVolume", "waterVolume", 
 "barometricPressure", "waterTemp", "concentrationCO2Gas", "concentrationCO2Air", 
 "concentrationCH4Gas", "concentrationCH4Air", "concentrationN2OGas", "concentrationN2OAir", 
-respectively, no other inputs are required. Otherwise, the names of the columns need to be 
-input for the function to work.}
+respectively, no other inputs are required. Otherwise, the names of the columns containing 
+the data must be specified.}
 
 \item{volGas}{Column name containing the data for volume of air equilibrated with 
 water (mL) [string]}
