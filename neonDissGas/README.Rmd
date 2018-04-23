@@ -23,7 +23,8 @@ The functions in this package have the following purpose: (1) to format download
 
 1. download data from the NEON data portal, into location "myDataPath"
 2. sdg_data <- def.format.sdg(dataDir = "myDataPath"), returns a data frame called sdg_data
-3. sdg_calc <- def.calc.sdg(sdg_data), returns a data frame called sdg_calc with molar concentrations appended as columns
+3. sdg_calc <- def.calc.sdg.conc(sdg_data), returns a data frame called sdg_calc with molar concentrations appended as columns
+4. sdg_sat <- def.calc.sdg.sat(sdg_calc), returns a data frame called sdg_sat with gas 100% saturation concentrations and percent saturation in the water
 
 
 <!-- ****** Calculation Summary ****** -->
