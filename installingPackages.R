@@ -6,6 +6,7 @@ if(!("devtools" %in% allPackages[,"Package"])){
 library(devtools)
 install_github("NEONScience/NEON-utilities/neonUtilities", force = TRUE, dependencies = TRUE)
 install_github("NEONScience/NEON-dissolved-gas/neonDissGas", force = TRUE, dependencies = TRUE)
+library(neonDissGas)
 
 dataDir <- "C:/Users/kcawley/Desktop/NEON_dissolved-gases-surfacewater.zip"
 
