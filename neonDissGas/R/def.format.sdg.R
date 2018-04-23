@@ -6,7 +6,7 @@
 #' Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 
 #' @description This function reads in data from the NEON Dissolved Gas data product to calculate dissolved gas concentrations in surface water. For the best results download the expanded dissolved gas package. No need to unzip the downloaded files, just place them all in the smae directory.
-#' @importFrom neonDataStackR stackByTable
+#' @importFrom neonUtilities stackByTable
 #' @importFrom utils read.csv
 
 #' @param dataDir User identifies the directory that contains the zipped data
@@ -27,14 +27,17 @@
 #' #where the data.zip file is in the downloads folder and has a specified name,
 #' #sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/non-standard-name.zip"))
 #' #Using the example data in this package
-#' dataDirectory <- paste(path.package("neonDissGas"),"inst\\extdata", sep = "\\")
-#' sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
+#' #dataDirectory <- paste(path.package("neonDissGas"),"inst\\extdata", sep = "\\")
+#' #sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
 
-#' @seealso def.values.sdg.R and def.calc.sdg.R for calculating dissolved gas concentrations
+#' @seealso def.calc.sdg.conc.R and def.calc.sdg.sat.R for calculating dissolved gas 
+#' concentrations and percent saturation, respectively
 
 # changelog and author contributions / copyrights
 #   Kaelin M. Cawley (2017-02-14)
 #     original creation
+#   Kaelin M. Cawley (2018-04-23)
+#     Update to use revised stackByTable function that is part of neonUtilities package
 ##############################################################################################
 def.format.sdg <- function(
   dataDir = paste0(getwd(),"/NEON_dissolved-gases-surfacewater.zip")
@@ -46,7 +49,7 @@ def.format.sdg <- function(
   
   #Stack field and external lab data
   if(!dir.exists(substr(dataDir, 1, (nchar(dataDir)-4)))){
-    stackByTable(dataDir)
+    stackByTable(dpID = "DP1.20097.001", filepath = dataDir)
   }
   
   externalLabData <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_externalLabData.csv", sep = "/"), stringsAsFactors = F)

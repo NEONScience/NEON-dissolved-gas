@@ -25,20 +25,21 @@ This function reads in data from the NEON Dissolved Gas data product to calculat
 #where the data.zip file is in the downloads folder and has a specified name,
 #sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/non-standard-name.zip"))
 #Using the example data in this package
-dataDirectory <- paste(path.package("neonDissGas"),"inst\\\\extdata", sep = "\\\\")
-sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
-}
-\author{
-Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
+#dataDirectory <- paste(path.package("neonDissGas"),"inst\\\\extdata", sep = "\\\\")
+#sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
 }
 \references{
 License: GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007
 }
 \seealso{
-def.values.sdg.R and def.calc.sdg.R for calculating dissolved gas concentrations
+def.calc.sdg.conc.R and def.calc.sdg.sat.R for calculating dissolved gas 
+concentrations and percent saturation, respectively
 CO2BelowDetection',
 CH4BelowDetection',
 N2OBelowDetection',
+}
+\author{
+Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 }
 \keyword{CH4,}
 \keyword{CO2,}
@@ -56,4 +57,3 @@ N2OBelowDetection',
 \keyword{streams,}
 \keyword{surface}
 \keyword{water,}
-

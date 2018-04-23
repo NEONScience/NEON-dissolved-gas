@@ -1,23 +1,25 @@
 
+#Re-install dataStackR since there may be non-code updates
+#Do not use: install_github("NEONScience/NEON-utilities/neonDataStackR", force = TRUE, dependencies = TRUE)
 library(devtools)
-library(roxygen2)
+install_github("NEONScience/NEON-utilities/neonUtilities", force = TRUE, dependencies = TRUE)
 
+library(roxygen2)
 setwd("C:/Users/kcawley/Documents/GitHub/NEON-dissolved-gas")
-setwd("C:/Users/Kaelin/Documents/GitHub/NEON-dissolved-gas")
-#setwd("C:/Users/Kaelin/Downloads/dplyr_0.7.4")
-#install("dplyr")
-install_github("NEONScience/NEON-utilities/neonDataStackR", force = TRUE, dependencies = TRUE)
+#setwd("C:/Users/Kaelin/Documents/GitHub/NEON-dissolved-gas")
 install("neonDissGas")
 library(neonDissGas)
 
-dataDir <- "C:/Users/kcawley/Downloads/NEON_dissolved-gases-surfacewater.zip"
-dataDir <- "C:/Users/Kaelin/Downloads/NEON_dissolved-gases-surfacewater.zip"
+dataDir <- "C:/Users/kcawley/Desktop/NEON_dissolved-gases-surfacewater.zip"
+#dataDir <- "C:/Users/kcawley/Downloads/NEON_dissolved-gases-surfacewater.zip"
+#dataDir <- "C:/Users/Kaelin/Downloads/NEON_dissolved-gases-surfacewater.zip"
 
 sdgFormatted <- def.format.sdg(dataDir = dataDir)
 
-sdgDataPlusVals <- def.calc.sdg(inputFile = sdgFormatted)
+sdgDataPlusConc <- def.calc.sdg.conc(inputFile = sdgFormatted)
+sdgDataPlusSat <- def.calc.sdg.sat(inputFile = sdgDataPlusConc)
 
 setwd("C:/Users/kcawley/Documents/GitHub/NEON-dissolved-gas/neonDissGas")
-setwd("C:/Users/Kaelin/Documents/GitHub/NEON-dissolved-gas/neonDissGas")
+#setwd("C:/Users/Kaelin/Documents/GitHub/NEON-dissolved-gas/neonDissGas")
 document()
 devtools::check()
