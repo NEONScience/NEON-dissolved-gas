@@ -8,9 +8,4 @@ install_github("NEONScience/NEON-utilities/neonUtilities", force = TRUE, depende
 install_github("NEONScience/NEON-dissolved-gas/neonDissGas", force = TRUE, dependencies = TRUE)
 library(neonDissGas)
 
-dataDir <- "C:/Users/kcawley/Desktop/NEON_dissolved-gases-surfacewater.zip"
-
-sdgFormatted <- def.format.sdg(dataDir = dataDir)
-
-sdgDataPlusVals <- def.calc.sdg(inputFile = sdgFormatted)
 
