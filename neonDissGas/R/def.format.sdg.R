@@ -48,7 +48,7 @@ def.format.sdg <- function(
   volGas <- 20 #mL
   
   #Stack field and external lab data
-  if(!dir.exists(substr(dataDir, 1, (nchar(dataDir)-4)))){
+  if(!dir.exists(gsub("\\.zip","",dataDir))){
     stackByTable(dpID = "DP1.20097.001", filepath = dataDir)
   }
   
