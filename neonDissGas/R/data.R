@@ -5,7 +5,7 @@
 #' water temperature, barometric pressure, volume of water, and volume of air needed to
 #' calculate dissolved gas concentrations in the water sample.
 #'
-#' @format A data frame with 25 rows and 18 variables:
+#' @format A data frame with 25 rows and 19 variables:
 #' \describe{
 #'   \item{waterSampleID}{sample identifier, string}
 #'   \item{referenceAirSampleID}{sample identifier, string}
@@ -14,7 +14,8 @@
 #'   \item{processedDate}{date and time of air and water equilibration, dateTime}
 #'   \item{stationID}{loaction of water sample collection, string}
 #'   \item{barometricPressure}{handhled meter measurement, kPa}
-#'   \item{waterTemp}{temperature of the water at the time of equilibration, Celsius}
+#'   \item{headspaceTemp}{temperature of the water following storage at the time of equilibration, Celsius}
+#'   \item{waterTemp}{temperature of the water at the time of sampling right before equilibration, Celsius}
 #'   \item{concentrationCO2Air}{CO2 concentration in air sample, ppmv}
 #'   \item{concentrationCO2Gas}{CO2 concentration in equilibrated gas sample, ppmv}
 #'   \item{concentrationCH4Air}{CH4 concentration in air sample, ppmv}
