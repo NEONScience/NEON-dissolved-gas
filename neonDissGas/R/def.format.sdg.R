@@ -38,6 +38,8 @@
 #     original creation
 #   Kaelin M. Cawley (2018-04-23)
 #     Update to use revised stackByTable function that is part of neonUtilities package
+#   Kaelin M. Cawley (2020-01-27)
+#     Update to work with loadByProduct in latest release of neonUtilities
 ##############################################################################################
 def.format.sdg <- function(
   dataDir = paste0(getwd(),"/NEON_dissolved-gases-surfacewater.zip")
@@ -47,14 +49,17 @@ def.format.sdg <- function(
   volH2O <- 40 #mL
   volGas <- 20 #mL
   
-  #Stack field and external lab data
-  if(!dir.exists(gsub("\\.zip","",dataDir))){
-    stackByTable(dpID = "DP1.20097.001", filepath = dataDir)
+  #Check if the data is loaded already using loadByProduct
+  if(!exists("externalLabData")&!exists("fieldDataProc")&!exists("fieldSuperParent")){
+    #If not, stack field and external lab data
+    if(!dir.exists(gsub("\\.zip","",dataDir))){
+      stackByTable(dpID = "DP1.20097.001", filepath = dataDir)
+    }
+    
+    externalLabData <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_externalLabData.csv", sep = "/"), stringsAsFactors = F)
+    fieldDataProc <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldDataProc.csv", sep = "/"), stringsAsFactors = F)
+    fieldSuperParent <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldSuperParent.csv", sep = "/"), stringsAsFactors = F)
   }
-  
-  externalLabData <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_externalLabData.csv", sep = "/"), stringsAsFactors = F)
-  fieldDataProc <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldDataProc.csv", sep = "/"), stringsAsFactors = F)
-  fieldSuperParent <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldSuperParent.csv", sep = "/"), stringsAsFactors = F)
   
   #Flag and set default field values
   fieldDataProc$volH2OSource <- ifelse(is.na(fieldDataProc$waterVolumeSyringe),1,0)
