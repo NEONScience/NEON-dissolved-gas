@@ -18,16 +18,20 @@ The general work flow with the Python scripts is slightly different compared to 
 
 1.  download data from the <a href="https://data.neonscience.org/home"> NEON data portal </a>(as a `.zip` archive), into any location
 2.  Use the `stackByTable` function in the `neonUtilities` package in `R` to extract the `.zip` archive and stack the files that it contains into different data tables (`.csv` format) required for these Python scripts. More information about using `neonUtilities`, including tutorials <a href="https://www.neonscience.org/neonDataStackR"> is here. </a>
-3. Import the Python functions so they are findable (similar to loading a package in `R`). Within a Python session, use:
-    *   `import def_format_sdg`
-    *   `import def_calc_sdg_conc`
-    *   `import def_calc_sdg_sat`
+3. Import the Python functions so they are findable (similar to loading a package in `R`). 
+   * There are 2 possible ways to do this:
+     a. Within a Python session, use:
+      *   `import def_format_sdg`
+      *   `import def_calc_sdg_conc`
+      *   `import def_calc_sdg_sat`
 
    Note: These commands need to be run from the same directory where the Python script files are located. Alternatively, these can be imported in a Python  'wrapper' script that is written for this analysis.
 
 4.  `sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>)` Replace <path_to_stacked_tables> with the actual path to the stacked table `.csv` files to analyze. Returns a data frame assigned to the name `sdg_data`
 5.  `sdg_calc = def_calc_sdg_conc(sdg_data)` Returns a data frame called sdg_calc with molar concentrations appended as columns
 6.  `sdg_sat = def_calc_sdg_sat(sdg_calc)` Returns a data frame called sdg_sat with gas 100% saturation concentrations and percent saturation in the water
+
+Note: The values returned by the Python scripts may be slightly different compared to those returned by the R script due to differences in rounding intermediate values. This appears to cause roughly a 0.1% difference in calculated percent saturation values.
 
 <!-- ****** Calculation Summary ****** -->
 Calculation Summary
