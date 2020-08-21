@@ -27,7 +27,8 @@ The general work flow with the Python scripts is slightly different compared to 
       *   `from def_calc_sdg_conc import def_calc_sdg_conc`
       *   `from def_calc_sdg_sat import def_calc_sdg_sat`
 
-4.  Run `sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>)` Replace <path_to_stacked_tables> with the actual path to the parent directory of the `stackedFiles` directory that itself if the parent directory to the stacked table `.csv` files to analyze. Returns a data frame assigned to the name `sdg_data`
+4.  Run `sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>)` 
+Replace <path_to_stacked_tables> with the actual path to the parent directory of the `stackedFiles` directory that itself if the parent directory to the stacked table `.csv` files to analyze. Returns a data frame assigned to the name `sdg_data`
 5.  Run `sdg_calc = def_calc_sdg_conc(sdg_data)` Uses the `sdg_data` DataFrame as input and returns a data frame called `sdg_calc` with molar concentrations appended as columns
 6.  Run `sdg_sat = def_calc_sdg_sat(sdg_calc)` Uses the `sdg_calc` DataFrame as input and returns a data frame called `sdg_sat` with gas 100% saturation concentrations and percent saturation in the water
 
