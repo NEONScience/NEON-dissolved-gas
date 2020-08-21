@@ -19,6 +19,7 @@ The general work flow with the Python scripts is slightly different compared to 
 1.  Download data from the <a href="https://data.neonscience.org/home"> NEON data portal </a>(as a `.zip` archive), into any location
 2.  Use the `stackByTable` function in the `neonUtilities` package in `R` to extract the `.zip` archive and stack the files that it contains into different data tables (`.csv` format) required for these Python scripts. More information about using `neonUtilities`, including tutorials <a href="https://www.neonscience.org/neonDataStackR"> is here. </a>
 3. Import the Python functions so they are findable (similar to loading a package in `R`). 
+   
    There are 2 possible ways to do this:
      1. Import the functions using a 'wrapper' script that is written for the analysis. An example of a Python 'wrapper' script (`analysis_wrapper_example.py`) is  included in this directory.
      2. Within a Python session (in the same directory where the Python script files are located), use:
