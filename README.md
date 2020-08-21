@@ -9,6 +9,9 @@ This repository contains R and Python code that can be used for calculating diss
 gas concentrations in surface water samples from reference air and water
 equilibrated gas samples. 
 
+See the `installingPackages.R` R script in the main directory of this repository
+for how to install the R package.
+
 The Python script translations of the original R package that is provided
 in this repository, along with examples of their use, are located in the `Python` directory.
 
