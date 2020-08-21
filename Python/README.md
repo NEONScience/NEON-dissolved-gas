@@ -2,7 +2,7 @@ NEON Dissolved Gas - Python version
 ================
 
 <!-- ****** Description ****** -->
-This is a Python implementation of the scripts in the R package for calculating dissolved gas concentrations in surface water samples. Needs to be run using Python version 3 (not version 2). For initial data formatting, it is necessary to use R and the R package `neonUtilities` to get the `.csv` input files required for these Python scripts.
+This is a Python implementation of the scripts in the R package for calculating dissolved gas concentrations in surface water samples. Needs to be run using Python version 3 (not version 2). For initial data formatting, it is necessary to use R and the R package `neonUtilities` to get the `.csv` input files required for these Python scripts. Tutorials for using `neonUtilities` <a href="https://www.neonscience.org/neonDataStackR"> are here. </a>
 
 
 <!-- ****** Installation ****** -->
