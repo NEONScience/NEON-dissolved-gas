@@ -2,18 +2,44 @@ NEON Dissolved Gas - Python version
 ================
 
 <!-- ****** Description ****** -->
-This is a Python implementation of the scripts in the R package for calculating dissolved gas concentrations in surface water samples. Needs to be run using Python version 3 (not version 2).
+This is a Python implementation of the scripts in the R package for calculating dissolved gas concentrations in surface water samples. Needs to be run using Python version 3 (not version 2). For initial data formatting, it is necessary to use R and the R package `neonUtilities` to get the `.csv` input files required for these Python scripts. Tutorials for using `neonUtilities` <a href="https://www.neonscience.org/neonDataStackR"> are here. </a>
+
+
+<!-- ****** Installation ****** -->
+These Python scripts require the `numpy` and `pandas` packages in order to run. One possible way to install these (and Python if needed) is through <a href="https://docs.conda.io/en/latest/miniconda.html">the miniconda package manager</a>.
 
 <!-- ****** Usage ****** -->
 Usage
 -----
 
-The functions in this package have the following purpose: (1) to format downloaded data, (2) to calculate dissolved gas concentrations in surface water (mol L-1) from headspace source gas and equilibrated air (ppmv) concentrations, (3) to calculate 100% saturation dissolved gas concenrations (i.e. dissolved gas concentrations in equilibrium with atmosphere) from water temperature, barometric pressure, and atmospheric concentrations (ppmv). See help files for individual functions for details. The general flow of using this package is:
+The functions in this package have the following purpose: (1) to format downloaded data, (2) to calculate dissolved gas concentrations in surface water (mol L-1) from headspace source gas and equilibrated air (ppmv) concentrations, (3) to calculate 100% saturation dissolved gas concenrations (i.e. dissolved gas concentrations in equilibrium with atmosphere) from water temperature, barometric pressure, and atmospheric concentrations (ppmv). See help files for individual functions for details. 
 
-1.  download data from the NEON data portal, into location "myDataPath"
-2.  sdg\_data &lt;- def.format.sdg(dataDir = "myDataPath"), returns a data frame called sdg\_data
-3.  sdg\_calc &lt;- def.calc.sdg.conc(sdg\_data), returns a data frame called sdg\_calc with molar concentrations appended as columns
-4.  sdg\_sat &lt;- def.calc.sdg.sat(sdg\_calc), returns a data frame called sdg\_sat with gas 100% saturation concentrations and percent saturation in the water
+The general work flow with the Python scripts is slightly different compared to using the R package, but they should give the same results:
+
+1.  Download data from the <a href="https://data.neonscience.org/home"> NEON data portal </a>(as a `.zip` archive), into any location
+2.  Use the `stackByTable` function in the `neonUtilities` package in `R` to extract the `.zip` archive and stack the files that it contains into different data tables (`.csv` format) required for these Python scripts. More information about using `neonUtilities`, including tutorials <a href="https://www.neonscience.org/neonDataStackR"> is here. </a>
+3. Import the Python functions so they are findable (similar to loading a package in `R`). 
+   
+   There are 2 possible ways to do this:
+     1. Import the functions using a 'wrapper' script that is written for the analysis. An example of a Python 'wrapper' script (`analysis_wrapper_example.py`) is  included in this directory.
+     2. Within a Python session (in the same directory where the Python script files are located), use:
+      *   `from def_format_sdg import def_format_sdg`
+      *   `from def_calc_sdg_conc import def_calc_sdg_conc`
+      *   `from def_calc_sdg_sat import def_calc_sdg_sat`
+
+4.  Run `sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>)` 
+
+    Replace <path_to_stacked_tables> with the actual path to the parent directory of the `stackedFiles` directory that itself if the parent directory to the stacked table `.csv` files to analyze. Returns a DataFrame assigned to the name `sdg_data`
+
+5.  Run `sdg_calc = def_calc_sdg_conc(sdg_data)` 
+
+    Uses the `sdg_data` DataFrame as input and returns a DataFrame assigned to the name `sdg_calc` that contains molar concentrations appended as columns
+
+6.  Run `sdg_sat = def_calc_sdg_sat(sdg_calc)` 
+
+    Uses the `sdg_calc` DataFrame as input and returns a DataFrame assigned to the name `sdg_sat` that contains gas 100% saturation concentrations and percent saturation in the water
+
+Note: The values returned by the Python scripts may be slightly different compared to those returned by the R script due to differences in rounding of intermediate values. This appears to cause roughly a 0.1% difference in calculated percent saturation values.
 
 <!-- ****** Calculation Summary ****** -->
 Calculation Summary
