@@ -23,7 +23,7 @@ The general work flow with the Python scripts is slightly different compared to 
     *   `import def_calc_sdg_conc`
     *   `import def_calc_sdg_sat`
 
-Note: These commands need to be run from the same directory where the Python script files are located. Alternatively, these can be imported in a Python 'wrapper' script that is written for this analysis.
+   Note: These commands need to be run from the same directory where the Python script files are located. Alternatively, these can be imported in a Python  'wrapper' script that is written for this analysis.
 
 4.  sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>) # Replace <path_to_stacked_tables> with the actual path to the stacked table `.csv` files to analyze. Returns a data frame assigned to the name `sdg_data`
 5.  sdg_calc = def_calc_sdg_conc(sdg_data), returns a data frame called sdg_calc with molar concentrations appended as columns
