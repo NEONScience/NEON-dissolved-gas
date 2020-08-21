@@ -16,9 +16,9 @@ The functions in this package have the following purpose: (1) to format download
 
 1.  download data from the NEON data portal (as a `.zip` archive), into any location
 2.  Use the `stackByTable` function in the `neonUtilities` package in `R` to extract the `.zip` archive and stack the files that it contains into different data tables (`.csv` format) required for these Python scripts. More information about using `neonUtilities`, including tutorials is here: <a href="https://www.neonscience.org/neonDataStackR"> 
-3.  sdg\_data &lt;- def.format.sdg(dataDir = "myDataPath"), returns a data frame called sdg\_data
-4.  sdg\_calc &lt;- def.calc.sdg.conc(sdg\_data), returns a data frame called sdg\_calc with molar concentrations appended as columns
-5.  sdg\_sat &lt;- def.calc.sdg.sat(sdg\_calc), returns a data frame called sdg\_sat with gas 100% saturation concentrations and percent saturation in the water
+3.  def.format.sdg(dataDir = "myDataPath"), returns a data frame called sdg\_data
+4.  def.calc.sdg.conc(sdg\_data), returns a data frame called sdg\_calc with molar concentrations appended as columns
+5.  def.calc.sdg.sat(sdg\_calc), returns a data frame called sdg\_sat with gas 100% saturation concentrations and percent saturation in the water
 
 <!-- ****** Calculation Summary ****** -->
 Calculation Summary
