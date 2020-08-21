@@ -5,9 +5,11 @@ NEON Dissolved Gas Repo
 
 <!-- ****** Description ****** -->
 
-This repository contains R and Python that can be used for calculating dissolved
+This repository contains R and Python code that can be used for calculating dissolved
 gas concentrations in surface water samples from reference air and water
-equilibrated gas samples. The Python script translations of the original R package provided
+equilibrated gas samples. 
+
+The Python script translations of the original R package that is provided
 in this repository, along with examples of their use, are located in the `Python` directory.
 
 <!-- ****** Usage ****** -->
