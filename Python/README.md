@@ -16,19 +16,19 @@ The functions in this package have the following purpose: (1) to format download
 
 The general work flow with the Python scripts is slightly different compared to using the R package, but they should give the same results:
 
-1.  download data from the <a href="https://data.neonscience.org/home"> NEON data portal </a>(as a `.zip` archive), into any location
+1.  Download data from the <a href="https://data.neonscience.org/home"> NEON data portal </a>(as a `.zip` archive), into any location
 2.  Use the `stackByTable` function in the `neonUtilities` package in `R` to extract the `.zip` archive and stack the files that it contains into different data tables (`.csv` format) required for these Python scripts. More information about using `neonUtilities`, including tutorials <a href="https://www.neonscience.org/neonDataStackR"> is here. </a>
 3. Import the Python functions so they are findable (similar to loading a package in `R`). 
-   * There are 2 possible ways to do this:
+   There are 2 possible ways to do this:
      1. Import the functions using a 'wrapper' script that is written for the analysis. An example of a Python 'wrapper' script (`analysis_wrapper_example.py`) is  included in this directory.
      2. Within a Python session (in the same directory where the Python script files are located), use:
       *   `from def_format_sdg import def_format_sdg`
       *   `from def_calc_sdg_conc import def_calc_sdg_conc`
       *   `from def_calc_sdg_sat import def_calc_sdg_sat`
 
-4.  `sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>)` Replace <path_to_stacked_tables> with the actual path to the parent directory of the `stackedFiles` directory that itself if the parent directory to the stacked table `.csv` files to analyze. Returns a data frame assigned to the name `sdg_data`
-5.  `sdg_calc = def_calc_sdg_conc(sdg_data)` Uses the `sdg_data` DataFrame as input and returns a data frame called `sdg_calc` with molar concentrations appended as columns
-6.  `sdg_sat = def_calc_sdg_sat(sdg_calc)` Uses the `sdg_calc` DataFrame as input and returns a data frame called `sdg_sat` with gas 100% saturation concentrations and percent saturation in the water
+4.  Run `sdg_data = def_format_sdg(data_dir = <path_to_stacked_tables>)` Replace <path_to_stacked_tables> with the actual path to the parent directory of the `stackedFiles` directory that itself if the parent directory to the stacked table `.csv` files to analyze. Returns a data frame assigned to the name `sdg_data`
+5.  Run `sdg_calc = def_calc_sdg_conc(sdg_data)` Uses the `sdg_data` DataFrame as input and returns a data frame called `sdg_calc` with molar concentrations appended as columns
+6.  Run `sdg_sat = def_calc_sdg_sat(sdg_calc)` Uses the `sdg_calc` DataFrame as input and returns a data frame called `sdg_sat` with gas 100% saturation concentrations and percent saturation in the water
 
 Note: The values returned by the Python scripts may be slightly different compared to those returned by the R script due to differences in rounding intermediate values. This appears to cause roughly a 0.1% difference in calculated percent saturation values.
 
