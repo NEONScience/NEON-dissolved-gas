@@ -1,9 +1,8 @@
-NEON Dissolved Gas
+NEON Dissolved Gas - Python version
 ================
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- ****** Description ****** -->
-This package is for calculating dissolved gas concentrations in surface water samples.
+This is a Python implementation of the scripts in the R package for calculating dissolved gas concentrations in surface water samples. Needs to be run using Python version 3 (not version 2).
 
 <!-- ****** Usage ****** -->
 Usage
