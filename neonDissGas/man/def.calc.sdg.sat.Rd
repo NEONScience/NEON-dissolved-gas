@@ -4,11 +4,18 @@
 \alias{def.calc.sdg.sat}
 \title{Dissolved Gas Percent Saturation Calculations}
 \usage{
-def.calc.sdg.sat(inputFile, baro = "barometricPressure",
-  waterTemp = "waterTemp", headspaceTemp = "headspaceTemp",
-  concCO2 = "dissolvedCO2", sourceCO2 = "concentrationCO2Air",
-  concCH4 = "dissolvedCH4", sourceCH4 = "concentrationCH4Air",
-  concN2O = "dissolvedN2O", sourceN2O = "concentrationN2OAir")
+def.calc.sdg.sat(
+  inputFile,
+  baro = "barometricPressure",
+  waterTemp = "waterTemp",
+  headspaceTemp = "headspaceTemp",
+  concCO2 = "dissolvedCO2",
+  sourceCO2 = "concentrationCO2Air",
+  concCH4 = "dissolvedCH4",
+  sourceCH4 = "concentrationCH4Air",
+  concN2O = "dissolvedN2O",
+  sourceN2O = "concentrationN2OAir"
+)
 }
 \arguments{
 \item{inputFile}{Name of the data frame containing the information needed to calculate 

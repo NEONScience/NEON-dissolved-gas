@@ -11,6 +11,8 @@
 #' ("concentrationCO2Air", "concentrationCH4Air", "concentrationN2OAir") for those gases 
 #' should be set to 0.
 
+#' @importFrom utils read.csv
+
 #' @param inputFile Name of the data frame containing the information needed to calculate the 
 #' dissolved gas concentrations. If the headers are named: "gasVolume", "waterVolume", 
 #' "barometricPressure", "waterTemp", "concentrationCO2Gas", "concentrationCO2Air", 

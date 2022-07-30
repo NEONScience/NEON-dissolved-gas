@@ -3,5 +3,4 @@
 export(def.calc.sdg.conc)
 export(def.calc.sdg.sat)
 export(def.format.sdg)
-importFrom(neonUtilities,stackByTable)
 importFrom(utils,read.csv)

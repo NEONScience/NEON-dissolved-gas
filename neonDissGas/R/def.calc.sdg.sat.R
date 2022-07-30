@@ -8,6 +8,8 @@
 #' water dissolved gas concentration (molar), water temperature (celsius), barometric pressure 
 #' (kPa), and reference air gas concentrations (ppmv).
 
+#' @importFrom utils read.csv
+
 #' @param inputFile Name of the data frame containing the information needed to calculate 
 #' the dissolved gas percent saturation. If the headers are named: barometricPressure", 
 #' "waterTemp", "dissolvedCO2", "concentrationCO2Air", "dissolvedCH4", "concentrationCH4Air", 

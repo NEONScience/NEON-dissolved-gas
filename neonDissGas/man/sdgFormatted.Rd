@@ -4,7 +4,8 @@
 \name{sdgFormatted}
 \alias{sdgFormatted}
 \title{Formatted dissolved gas data.}
-\format{A data frame with 25 rows and 19 variables:
+\format{
+A data frame with 25 rows and 19 variables:
 \describe{
   \item{waterSampleID}{sample identifier, string}
   \item{referenceAirSampleID}{sample identifier, string}
@@ -26,7 +27,8 @@
   \item{volH2OSource}{0 = found in data, 1 = default value used}
   \item{volGasSource}{0 = found in data, 1 = default value used}
   ...
-}}
+}
+}
 \source{
 \url{http://data.neoninc.org/home/}
 }

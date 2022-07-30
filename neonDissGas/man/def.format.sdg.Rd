@@ -4,11 +4,14 @@
 \alias{def.format.sdg}
 \title{Dissolved Gas Data Formatting}
 \usage{
-def.format.sdg(dataDir = paste0(getwd(),
-  "/NEON_dissolved-gases-surfacewater.zip"))
+def.format.sdg(externalLabData = NA, fieldDataProc = NA, fieldSuperParent = NA)
 }
 \arguments{
-\item{dataDir}{User identifies the directory that contains the zipped data}
+\item{externalLabData}{Data frame containing external lab data for NEON}
+
+\item{fieldDataProc}{Data frame containing field processing data for NEON}
+
+\item{fieldSuperParent}{Data frame containing field collection data for NEON}
 }
 \value{
 This function returns one data frame formatted for use with def.calc.sdg.R to actually calculate the concentration of the gases in the surface water sample
@@ -17,16 +20,7 @@ This function returns one data frame formatted for use with def.calc.sdg.R to ac
 This function reads in data from the NEON Dissolved Gas data product to calculate dissolved gas concentrations in surface water. For the best results download the expanded dissolved gas package. No need to unzip the downloaded files, just place them all in the smae directory.
 }
 \examples{
-#where the data .zip file is in the working directory and has the default name, 
-#sdgFormatted <- def.format.sdg()
-#where the data.zip file is in the downloads folder and has default name, 
-#sdgFormatted <- 
-#def.format.sdg(dataDir = path.expand("~/Downloads/NEON_dissolved-gases-surfacewater.zip"))
-#where the data.zip file is in the downloads folder and has a specified name,
-#sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/non-standard-name.zip"))
-#Using the example data in this package
-#dataDirectory <- paste(path.package("neonDissGas"),"inst\\\\extdata", sep = "\\\\")
-#sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
+\dontrun{TBD}
 }
 \references{
 License: GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007

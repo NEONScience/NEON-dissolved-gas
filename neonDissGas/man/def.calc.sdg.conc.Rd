@@ -4,12 +4,20 @@
 \alias{def.calc.sdg.conc}
 \title{Dissolved Gas Concentration Calculations}
 \usage{
-def.calc.sdg.conc(inputFile, volGas = "gasVolume",
-  volH2O = "waterVolume", baro = "barometricPressure",
-  waterTemp = "waterTemp", headspaceTemp = "headspaceTemp",
-  eqCO2 = "concentrationCO2Gas", sourceCO2 = "concentrationCO2Air",
-  eqCH4 = "concentrationCH4Gas", sourceCH4 = "concentrationCH4Air",
-  eqN2O = "concentrationN2OGas", sourceN2O = "concentrationN2OAir")
+def.calc.sdg.conc(
+  inputFile,
+  volGas = "gasVolume",
+  volH2O = "waterVolume",
+  baro = "barometricPressure",
+  waterTemp = "waterTemp",
+  headspaceTemp = "headspaceTemp",
+  eqCO2 = "concentrationCO2Gas",
+  sourceCO2 = "concentrationCO2Air",
+  eqCH4 = "concentrationCH4Gas",
+  sourceCH4 = "concentrationCH4Air",
+  eqN2O = "concentrationN2OGas",
+  sourceN2O = "concentrationN2OAir"
+)
 }
 \arguments{
 \item{inputFile}{Name of the data frame containing the information needed to calculate the 

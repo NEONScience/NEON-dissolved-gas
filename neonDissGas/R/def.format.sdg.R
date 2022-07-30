@@ -6,10 +6,10 @@
 #' Kaelin M. Cawley \email{kcawley@battelleecology.org} \cr
 
 #' @description This function reads in data from the NEON Dissolved Gas data product to calculate dissolved gas concentrations in surface water. For the best results download the expanded dissolved gas package. No need to unzip the downloaded files, just place them all in the smae directory.
-#' @importFrom neonUtilities stackByTable
-#' @importFrom utils read.csv
 
-#' @param dataDir User identifies the directory that contains the zipped data
+#' @param externalLabData Data frame containing external lab data for NEON
+#' @param fieldDataProc Data frame containing field processing data for NEON
+#' @param fieldSuperParent Data frame containing field collection data for NEON
 
 #' @return This function returns one data frame formatted for use with def.calc.sdg.R to actually calculate the concentration of the gases in the surface water sample
 
@@ -19,16 +19,7 @@
 #' @keywords dissolved gases, methane, CH4, carbon dioxide, CO2, nitrous oxide, N2O, surface water, aquatic, streams, lakes, rivers
 
 #' @examples
-#' #where the data .zip file is in the working directory and has the default name, 
-#' #sdgFormatted <- def.format.sdg()
-#' #where the data.zip file is in the downloads folder and has default name, 
-#' #sdgFormatted <- 
-#' #def.format.sdg(dataDir = path.expand("~/Downloads/NEON_dissolved-gases-surfacewater.zip"))
-#' #where the data.zip file is in the downloads folder and has a specified name,
-#' #sdgFormatted <- def.format.sdg(dataDir = path.expand("~/Downloads/non-standard-name.zip"))
-#' #Using the example data in this package
-#' #dataDirectory <- paste(path.package("neonDissGas"),"inst\\extdata", sep = "\\")
-#' #sdgFormatted <- def.format.sdg(dataDir = dataDirectory)
+#' \dontrun{TBD}
 
 #' @seealso def.calc.sdg.conc.R and def.calc.sdg.sat.R for calculating dissolved gas 
 #' concentrations and percent saturation, respectively
@@ -40,26 +31,23 @@
 #     Update to use revised stackByTable function that is part of neonUtilities package
 #   Kaelin M. Cawley (2020-01-27)
 #     Update to work with loadByProduct in latest release of neonUtilities
+#   Kaelin M. Cawley (2022-07-30)
+#     Updated to be a little more agnostic to download process and not require neonUtilities
 ##############################################################################################
 def.format.sdg <- function(
-  dataDir = paste0(getwd(),"/NEON_dissolved-gases-surfacewater.zip")
+    externalLabData = NA,
+    fieldDataProc = NA,
+    fieldSuperParent = NA
 ) {
+  
+  #Check if the data is loaded already using loadByProduct
+  if(all(is.na(externalLabData)) | all(is.na(fieldDataProc)) | all(is.na(fieldSuperParent))){
+    print("externalLabData, fieldDataProd, and fieldSuperParent data tables are required to proceed.")
+  }
   
   ##### Default values #####
   volH2O <- 40 #mL
   volGas <- 20 #mL
-  
-  #Check if the data is loaded already using loadByProduct
-  if(!exists("externalLabData")&!exists("fieldDataProc")&!exists("fieldSuperParent")){
-    #If not, stack field and external lab data
-    if(!dir.exists(gsub("\\.zip","",dataDir))){
-      stackByTable(dpID = "DP1.20097.001", filepath = dataDir)
-    }
-    
-    externalLabData <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_externalLabData.csv", sep = "/"), stringsAsFactors = F)
-    fieldDataProc <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldDataProc.csv", sep = "/"), stringsAsFactors = F)
-    fieldSuperParent <- read.csv(paste(gsub("\\.zip","",dataDir),"stackedFiles","sdg_fieldSuperParent.csv", sep = "/"), stringsAsFactors = F)
-  }
   
   #Flag and set default field values
   fieldDataProc$volH2OSource <- ifelse(is.na(fieldDataProc$waterVolumeSyringe),1,0)
@@ -100,7 +88,7 @@ def.format.sdg <- function(
       outputDF[,k] <- fieldDataProc[,names(fieldDataProc) == names(outputDF)[k]]
     }
     outputDF$headspaceTemp <- fieldDataProc$storageWaterTemp
-    outputDF$barometricPressure <- fieldDataProc$ptBarometricPressure
+    outputDF$barometricPressure <- ifelse(!is.na(fieldDataProc$ptBarometricPressure), fieldDataProc$ptBarometricPressure, fieldDataProc$procBarometricPressure)
     outputDF$waterVolume <- fieldDataProc$waterVolumeSyringe
     outputDF$gasVolume <- fieldDataProc$gasVolumeSyringe
     outputDF$stationID <- fieldDataProc$namedLocation
