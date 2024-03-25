@@ -4,6 +4,11 @@ sdgData <- neonUtilities::loadByProduct(dpID = "DP1.20097.001",
                                         startdate = "2022-01",
                                         check.size = FALSE)
 
+sdgData <- neonUtilities::loadByProduct(dpID = "DP1.20097.001",
+                                        site = c('TOOK'),
+                                        include.provisional = TRUE,
+                                        check.size = FALSE)
+
 externalLabData <- sdgData$sdg_externalLabData
 fieldDataProc <- sdgData$sdg_fieldDataProc
 fieldSuperParent <- sdgData$sdg_fieldSuperParent
